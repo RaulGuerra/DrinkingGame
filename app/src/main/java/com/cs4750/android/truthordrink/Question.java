@@ -16,7 +16,7 @@ public class Question {
     private String question;
 
     @NonNull
-    @ColumnInfo(name = "type")
+    @ColumnInfo(name = "type") // type = A -> question
     private String type;
 
     public Question(@NonNull String question, @NonNull String type) {
