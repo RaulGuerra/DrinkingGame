@@ -15,7 +15,7 @@ public interface QuestionDao {
     void insertQuestion(Question question);
 
     @Delete
-    void delete(Question target);
+    void deleteQuestion(Question target);
 
     @Query("SELECT * FROM question_table WHERE type = :target_type")
     List<Question> getAllQuestionByType(String target_type);

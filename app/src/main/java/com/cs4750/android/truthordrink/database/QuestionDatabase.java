@@ -13,7 +13,7 @@ public abstract class QuestionDatabase extends RoomDatabase {
     public abstract QuestionDao questionDao();
     private static QuestionDatabase INSTANCE;
 
-    static QuestionDatabase getDatabase(final Context context) {
+    public static QuestionDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (QuestionDatabase.class) {
                 if (INSTANCE == null) {
