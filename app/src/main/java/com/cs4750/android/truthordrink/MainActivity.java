@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.cs4750.android.truthordrink.database.QuestionDatabase;
+
 public class MainActivity extends AppCompatActivity {
     private Button deck1Button;
     private Button deck2Button;
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        QuestionDatabase.getDatabase(this); // initiate database
         setContentView(R.layout.activity_main);
 
         deck1Button = (Button) findViewById(R.id.deck1);
