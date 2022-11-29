@@ -2,7 +2,11 @@ package com.cs4750.android.truthordrink;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
@@ -14,10 +18,63 @@ public class Deck4 extends AppCompatActivity {
     ArrayList<String > s;
     ArrayAdapter arrayAdapter;
     int n = 0;
+    Button answerButton;
+    Button drinkButton;
+    Button skipButton;
+    TextView player1;
+    TextView player2;
+    TextView player3;
+    TextView player4;
+    TextView player_turn;
+    ArrayList<User> userList;
+    ArrayList<TextView> textList;
+    int currentPlayer=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deck4);
+        answerButton = findViewById(R.id.answer_button);
+        drinkButton = findViewById(R.id.drink_button);
+        skipButton = findViewById(R.id.skip_button);
+        player1 = findViewById(R.id.player_1);
+        player2 = findViewById(R.id.player_2);
+        player3 = findViewById(R.id.player_3);
+        player4 = findViewById(R.id.player_4);
+        textList = new ArrayList<TextView>();
+        textList.add(player1);
+        textList.add(player2);
+        textList.add(player3);
+        textList.add(player4);
+        player_turn = findViewById(R.id.player_turn);
+        userList = new ArrayList<User>();
+        for(int i = 0; i < 4; i++){
+            userList.add(new User());
+        }
+        player_turn.setText("Player turn: " + (currentPlayer+1));
+
+        answerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userList.get(currentPlayer).incrementScore();
+                textList.get(currentPlayer).setText("Player " + (currentPlayer+1) + ": " + userList.get(currentPlayer).getScore()+ " points");
+                currentPlayer= (currentPlayer +1)%userList.size();
+                player_turn.setText("Player turn: " + (currentPlayer+1));
+            }
+        });
+        drinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentPlayer= (currentPlayer +1)%userList.size();
+                player_turn.setText("Player turn: " + (currentPlayer+1));
+            }
+        });
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentPlayer= (currentPlayer +1)%userList.size();
+                player_turn.setText("Player turn: " + (currentPlayer+1));
+            }
+        });
         s=new ArrayList<String >();
         s.add("Does our relationship bring out the best in you? In me? If not, why? (Everybody answers)");
         s.add("What’s something you resent about me? (Everybody answers)");
