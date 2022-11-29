@@ -7,6 +7,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck4 extends AppCompatActivity {
 
@@ -122,6 +123,8 @@ public class Deck4 extends AppCompatActivity {
         s.add("Would your life be any worse if we had never met?");
         s.add("What have you done while intoxicated that you wish you could take back?");
         s.add("If we lived across the country from each other, do you think we’d lose touch?");
+
+        Collections.shuffle(s);
 
         SwipeFlingAdapterView swipeFlingAdapterView=(SwipeFlingAdapterView) findViewById(R.id.card);
 

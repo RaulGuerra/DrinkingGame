@@ -7,6 +7,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck1 extends AppCompatActivity {
 
@@ -124,6 +125,8 @@ public class Deck1 extends AppCompatActivity {
         s.add("What is your greatest style- related regret as an adult? Have you glo’d up since?");
         s.add("What’s the most embarassing thing you’ve had to ask Google?");
         s.add("When was the last time you laughed so hard you cried?");
+
+        Collections.shuffle(s);
 
         SwipeFlingAdapterView swipeFlingAdapterView=(SwipeFlingAdapterView) findViewById(R.id.card);
 
