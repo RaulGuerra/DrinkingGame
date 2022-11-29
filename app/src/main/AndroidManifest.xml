@@ -10,14 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Help"></activity>
-        <activity android:name=".SpinBottle" />
-        <activity android:name=".Deck4" />
-        <activity android:name=".Deck3" />
-        <activity android:name=".Deck2" />
-        <activity android:name=".Deck1" />
+        <activity android:name=".Help"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SpinBottle"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Deck4"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Deck3"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Deck2"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Deck1"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
