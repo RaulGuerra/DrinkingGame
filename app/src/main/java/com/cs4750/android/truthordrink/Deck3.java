@@ -7,6 +7,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck3 extends AppCompatActivity {
 
@@ -125,6 +126,8 @@ public class Deck3 extends AppCompatActivity {
         s.add("Do you know where your G-spot is? Are you sure?");
         s.add("List all the illicit drugs you’ve tried. What more would you like to try?");
         s.add("How confident are you in your oral sex skills? How do you know?");
+
+        Collections.shuffle(s);
 
         SwipeFlingAdapterView swipeFlingAdapterView=(SwipeFlingAdapterView) findViewById(R.id.card);
 
