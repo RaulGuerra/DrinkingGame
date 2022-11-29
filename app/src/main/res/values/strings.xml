@@ -7,4 +7,12 @@
     <string name="spinbottle_btn">Spin the bottle</string>
     <string name="help_btn">Help</string>
     <string name="logo_desc">Truth Or Drink Logo</string>
+    <string name="spin_btn">Spin the bottle!</string>
+    <string name="help_title">Welcome to the help section!</string>
+    <string name="help_desc">Pick a deck and read the question on the card. The person to your right will have to answer that question. \n\nThey now make a choice: Tell the truth or take a shot. Afterwards, swipe the card to reveal the next question. The person who just answered (or took a shot) will now ask the person to their right the next question. \n\nWe recommend you mix up the spots from time to time, but that\'s up to you. Whatever deck you choose, you are bound to find good laughs, good times, and sometimes even little secrets! \n\nTo play any of the decks, just click on the corresponding button in the main menu:</string>
+    <string name="help_level1">***LEVEL 1 - GOOD VIBES ONLY: \n A set of feel-good questions for everyone participating. Good times guaranteed!</string>
+    <string name="help_level2">***LEVEL 2 - LOOSEN UP:\n A deck for sharing laughs with mixed company. Chill questions that help everyone loosen up.</string>
+    <string name="help_level3">***LEVEL 3 - ADULT DRINKS, ADULT TALKS, ADULT TIMES: \n NSFW Warning: No kids allowed with this adult-themed deck. From cringy moments to sexy dares, it\'s all about sex in great detail!</string>
+    <string name="help_level4">***LEVEL 4 - NOTHING LEFT TO LOSE: \n NSFW Warning: don\'t play this unless you have nothing left to lose tonight. There are swears too, so yeah...</string>
+    <string name="help_footer">We also offer a \'Spin The Bottle\' feature, where you can make up your own game with questions or dares. How practical, isn\'t it?</string>
 </resources>
