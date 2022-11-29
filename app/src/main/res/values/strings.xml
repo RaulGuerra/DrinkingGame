@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TruthOrDrink</string>
+    <string name="level1_btn">Level 1</string>
+    <string name="level2_btn">Level 2</string>
+    <string name="level3_btn">Level 3</string>
+    <string name="level4_btn">Level 4</string>
+    <string name="spinbottle_btn">Spin the bottle</string>
+    <string name="help_btn">Help</string>
+    <string name="logo_desc">Truth Or Drink Logo</string>
 </resources>
