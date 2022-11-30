@@ -5,50 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<TextView
-    android:id="@+id/player_1"
-    android:layout_width="100dp"
-    android:gravity="center"
-    android:text="Player 1: 0 points"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    android:layout_height="40dp"></TextView>
-    <TextView
-        android:id="@+id/player_2"
-        android:layout_width="100dp"
-        android:gravity="center"
-        android:text="Player 2: 0 points"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/player_1"
-        android:layout_height="40dp"></TextView>
-    <TextView
-        android:id="@+id/player_3"
-        android:layout_width="100dp"
-        android:gravity="center"
-        android:text="Player 3: 0 points"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/player_2"
-        android:layout_height="40dp"></TextView>
-    <TextView
-        android:id="@+id/player_4"
-        android:layout_width="100dp"
-        android:gravity="center"
-        android:text="Player 4: 0 points"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/player_3"
-        android:layout_height="40dp"></TextView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/button_border_square"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card">
+
+        <TextView
+            android:id="@+id/player_1"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="@string/playerscore1_default"/>
+
+        <TextView
+            android:id="@+id/player_2"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="@string/playerscore2_default"/>
+
+        <TextView
+            android:id="@+id/player_3"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="@string/playerscore3_default"/>
+
+        <TextView
+            android:id="@+id/player_4"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="@string/playerscore4_default"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/player_turn"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="monospace"
         android:gravity="center"
-        android:text="Player turn: "
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        ></TextView>
+        android:text="@string/playerturn_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -65,34 +79,39 @@
 
     <Button
         android:id="@+id/answer_button"
-        android:layout_width="99dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="10dp"
-        android:text="Answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="monospace"
+        android:text="@string/answer_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"></Button>
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
         android:id="@+id/drink_button"
-        android:layout_width="99dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="10dp"
-        android:text="Drinks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="monospace"
+        android:text="@string/drinks_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/answer_button"
-        app:layout_constraintRight_toLeftOf="@id/skip_button"
-        ></Button>
+        app:layout_constraintRight_toLeftOf="@id/skip_button"/>
 
     <Button
         android:id="@+id/skip_button"
-        android:layout_width="99dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="10dp"
-        android:text="Skips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="monospace"
+        android:text="@string/skip_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"></Button>
+        app:layout_constraintRight_toRightOf="parent"/>
     <TextView
         android:id="@+id/winner"
         android:layout_width="200dp"
@@ -100,8 +119,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        ></TextView>
+        app:layout_constraintRight_toRightOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>
