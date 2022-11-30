@@ -2,6 +2,8 @@ package com.cs4750.android.truthordrink;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,7 +36,11 @@ public class Deck1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_deck1);
+        
         Bundle values = getIntent().getExtras();
         int num_players = values.getInt("players");
         answerButton = findViewById(R.id.answer_button);
@@ -83,6 +89,7 @@ public class Deck1 extends AppCompatActivity {
                 player_turn.setText("Player turn: " + (currentPlayer+1));
             }
         });
+
         s=new ArrayList<String >();
         s.add("Pay me three sincere compliments. (Everybody answers)");
         s.add("What’s the best compliment you’ve ever been given? (Everybody answers)");

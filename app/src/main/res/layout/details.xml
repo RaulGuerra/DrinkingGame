@@ -9,15 +9,16 @@
         android:id="@+id/textView"
         android:layout_width="250dp"
         android:layout_height="440dp"
-        android:background="#766B87"
+        android:background="@drawable/button_border"
+        android:fontFamily="monospace"
         android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
