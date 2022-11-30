@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_border_square"
         android:orientation="horizontal"
         android:padding="8dp"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/playerscore1_default"/>
+            android:text="@string/playerscore1_default" />
 
         <TextView
             android:id="@+id/player_2"
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/playerscore2_default"/>
+            android:text="@string/playerscore2_default" />
 
         <TextView
             android:id="@+id/player_3"
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/playerscore3_default"/>
+            android:text="@string/playerscore3_default" />
 
         <TextView
             android:id="@+id/player_4"
@@ -47,11 +48,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/playerscore4_default"/>
+            android:text="@string/playerscore4_default" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/player_turn"
+        android:id="@+id/player_turn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -60,7 +61,8 @@
         android:text="@string/playerturn_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -72,41 +74,7 @@
         app:max_visible="7"
         app:min_adapter_stack="8"
         app:rotation_degrees="20" />
-    <Button
-        android:id="@+id/answer_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="84dp"
-        android:background="@drawable/button_border"
-        android:fontFamily="monospace"
-        android:text="@string/answer_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <Button
-        android:id="@+id/drink_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
-        android:background="@drawable/button_border"
-        android:fontFamily="monospace"
-        android:text="@string/drinks_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/answer_button"
-        app:layout_constraintRight_toLeftOf="@id/skip_button"/>
-
-    <Button
-        android:id="@+id/skip_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="84dp"
-        android:background="@drawable/button_border"
-        android:fontFamily="monospace"
-        android:text="@string/skip_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
     <TextView
     android:id="@+id/winner"
     android:layout_width="200dp"
@@ -115,4 +83,48 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/answer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:fontFamily="monospace"
+            android:text="@string/answer_btn" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/drink_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:fontFamily="monospace"
+            android:text="@string/drinks_btn" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/skip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:fontFamily="monospace"
+            android:text="@string/skip_btn" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
