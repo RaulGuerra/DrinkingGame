@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
@@ -25,6 +26,7 @@ public class Deck1 extends AppCompatActivity {
     TextView player3;
     TextView player4;
     TextView player_turn;
+    TextView winner;
     ArrayList<User> userList;
     ArrayList<TextView> textList;
     int currentPlayer=0;
@@ -41,6 +43,7 @@ public class Deck1 extends AppCompatActivity {
         player2 = findViewById(R.id.player_2);
         player3 = findViewById(R.id.player_3);
         player4 = findViewById(R.id.player_4);
+        winner = findViewById(R.id.winner);
         textList = new ArrayList<TextView>();
         textList.add(player1);
         textList.add(player2);
@@ -195,6 +198,57 @@ public class Deck1 extends AppCompatActivity {
             public void removeFirstObjectInAdapter(){
                 s.remove(0);
                 arrayAdapter.notifyDataSetChanged();
+                if(s.size()==0)
+                {
+                    answerButton.setVisibility(View.GONE);
+                    drinkButton.setVisibility(View.GONE);
+                    skipButton.setVisibility(View.GONE);
+                    player1.setVisibility(View.GONE);
+                    player2.setVisibility(View.GONE);
+                    player3.setVisibility(View.GONE);
+                    player4.setVisibility(View.GONE);
+                    player_turn.setVisibility(View.GONE);
+                    int winnerIndex=0;
+                    int maxScore = userList.get(0).getScore();
+                    for(int i = 1; i < userList.size(); i++){
+                        if(maxScore< userList.get(i).getScore()){
+                            maxScore = userList.get(i).getScore();
+                            winnerIndex=i;
+                        }
+                    }
+                    ArrayList<Integer> winners = new ArrayList<Integer>();
+                    winners.add(winnerIndex);
+                    for(int i = 0; i < userList.size(); i++){
+                        if(i!=winnerIndex && maxScore == userList.get(i).getScore()){
+                            winners.add(i);
+                        }
+                    }
+
+                    if(maxScore == 0){
+                        winner.setText("No one scored any points...");
+                    }
+                    else {
+                        if(winners.size()==1) {
+                            winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
+                        }
+                        else{
+                            String win = "Players ";
+                            if (winners.size()==2){
+                                win += (winners.get(0)+1) + " and " + (winners.get(1)+1);
+                            }
+                            else {
+                                for (int i = 0; i < winners.size() - 1; i++) {
+                                    win += (i+1) + ", ";
+                                }
+
+                                win += "and " + (winners.get(winners.size() - 1)+1);
+                            }
+                            winner.setText(win + " have tied with a score of " + maxScore + " points!!!");
+                        }
+
+                    }
+
+                }
             }
 
             @Override
