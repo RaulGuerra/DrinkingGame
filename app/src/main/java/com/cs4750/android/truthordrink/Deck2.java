@@ -35,6 +35,8 @@ public class Deck2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deck2);
+        Bundle values = getIntent().getExtras();
+        int num_players = values.getInt("players");
         answerButton = findViewById(R.id.answer_button);
         drinkButton = findViewById(R.id.drink_button);
         skipButton = findViewById(R.id.skip_button);
@@ -50,9 +52,13 @@ public class Deck2 extends AppCompatActivity {
         textList.add(player4);
         player_turn = findViewById(R.id.player_turn);
         userList = new ArrayList<User>();
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < num_players; i++){
             userList.add(new User());
         }
+        for(int i = num_players; i < textList.size(); i++){
+            textList.get(i).setVisibility(View.GONE);
+        }
+
         player_turn.setText("Player turn: " + (currentPlayer+1));
 
         answerButton.setOnClickListener(new View.OnClickListener() {

@@ -34,6 +34,8 @@ public class Deck4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deck4);
+        Bundle values = getIntent().getExtras();
+        int num_players = values.getInt("players");
         answerButton = findViewById(R.id.answer_button);
         drinkButton = findViewById(R.id.drink_button);
         skipButton = findViewById(R.id.skip_button);
@@ -41,6 +43,7 @@ public class Deck4 extends AppCompatActivity {
         player2 = findViewById(R.id.player_2);
         player3 = findViewById(R.id.player_3);
         player4 = findViewById(R.id.player_4);
+        winner = findViewById(R.id.winner);
         textList = new ArrayList<TextView>();
         textList.add(player1);
         textList.add(player2);
@@ -48,8 +51,11 @@ public class Deck4 extends AppCompatActivity {
         textList.add(player4);
         player_turn = findViewById(R.id.player_turn);
         userList = new ArrayList<User>();
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < num_players; i++){
             userList.add(new User());
+        }
+        for(int i = num_players; i < textList.size(); i++){
+            textList.get(i).setVisibility(View.GONE);
         }
         player_turn.setText("Player turn: " + (currentPlayer+1));
 

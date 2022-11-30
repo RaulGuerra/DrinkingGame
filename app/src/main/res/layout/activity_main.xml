@@ -77,5 +77,27 @@
         android:layout_marginBottom="91dp"
         android:text="Help" />
 
+    <CheckBox
+        android:id="@+id/two_players"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="372dp"
+        android:text="2 players"></CheckBox>
 
+    <CheckBox
+        android:id="@+id/three_players"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="300dp"
+        android:text="3 players"></CheckBox>
+
+    <CheckBox
+        android:id="@+id/four_players"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="228dp"
+        android:text="4 players"></CheckBox>
 </RelativeLayout>
