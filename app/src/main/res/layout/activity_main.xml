@@ -113,17 +113,31 @@
         app:srcCompat="@drawable/main_menu_logo" />
 
     <CheckBox
-        android:id="@+id/two_players"
+        android:id="@+id/no_players"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
         android:buttonTint="@android:color/background_dark"
         android:fontFamily="monospace"
         android:minHeight="48dp"
-        android:text="@string/twoplayers_btn"
+        android:text="@string/no_players"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
+
+    <CheckBox
+        android:id="@+id/two_players"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="84dp"
+        android:buttonTint="@android:color/background_dark"
+        android:fontFamily="monospace"
+        android:minHeight="48dp"
+        android:text="@string/twoplayers_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
 
     <CheckBox
@@ -131,13 +145,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="40dp"
         android:buttonTint="@android:color/background_dark"
         android:fontFamily="monospace"
         android:minHeight="48dp"
         android:text="@string/threeplayers_btn"
-        app:layout_constraintEnd_toStartOf="@+id/four_players"
-        app:layout_constraintStart_toEndOf="@+id/two_players"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
 
     <CheckBox
@@ -145,8 +159,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="84dp"
         android:buttonTint="@android:color/background_dark"
         android:checked="false"
         android:fontFamily="monospace"

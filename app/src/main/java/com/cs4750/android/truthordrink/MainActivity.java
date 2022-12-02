@@ -18,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     private Button deck4Button;
     private Button spinBottleButton;
     private Button helpButton;
+    private CheckBox no_players;
     private CheckBox two_players;
     private CheckBox three_players;
     private CheckBox four_players;
-    private int num_players = 2;
+    private int num_players = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
         deck1Button = (Button) findViewById(R.id.deck1);
         deck1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,18 +63,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        no_players = findViewById(R.id.no_players);
         two_players = findViewById(R.id.two_players);
         three_players = findViewById(R.id.three_players);
         four_players = findViewById(R.id.four_players);
-        two_players.setChecked(true);
+        no_players.setChecked(true);
 
-        two_players.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        no_players.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
                     three_players.setChecked(false);
                     four_players.setChecked(false);
+                    two_players.setChecked(false);
+                    no_players.setClickable(false);
+                    two_players.setClickable(true);
+                    three_players.setClickable(true);
+                    four_players.setClickable(true);
+                    num_players=0;
+                }
+            }
+        });
+        two_players.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    no_players.setChecked(false);
+                    three_players.setChecked(false);
+                    four_players.setChecked(false);
                     two_players.setClickable(false);
+                    no_players.setClickable(true);
                     three_players.setClickable(true);
                     four_players.setClickable(true);
                     num_players=2;
@@ -85,9 +103,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+                    no_players.setChecked(false);
                     two_players.setChecked(false);
                     four_players.setChecked(false);
                     three_players.setClickable(false);
+                    no_players.setClickable(true);
                     two_players.setClickable(true);
                     four_players.setClickable(true);
                     num_players=3;
@@ -98,11 +118,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+                    no_players.setChecked(false);
                     three_players.setChecked(false);
                     two_players.setChecked(false);
                     four_players.setClickable(false);
                     three_players.setClickable(true);
                     two_players.setClickable(true);
+                    no_players.setClickable(true);
                     num_players=4;
                 }
             }

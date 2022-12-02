@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -28,6 +29,7 @@ public class Deck3 extends AppCompatActivity {
     TextView player3;
     TextView player4;
     TextView player_turn;
+    LinearLayout score_board;
     ArrayList<User> userList;
     ArrayList<TextView> textList;
     int currentPlayer=0;
@@ -41,7 +43,8 @@ public class Deck3 extends AppCompatActivity {
         setContentView(R.layout.activity_deck3);
         
         Bundle values = getIntent().getExtras();
-        int num_players = values.getInt("players");
+        final int num_players = values.getInt("players");
+        score_board=findViewById(R.id.linearLayout);
         answerButton = findViewById(R.id.answer_button);
         drinkButton = findViewById(R.id.drink_button);
         skipButton = findViewById(R.id.skip_button);
@@ -88,7 +91,13 @@ public class Deck3 extends AppCompatActivity {
                 player_turn.setText("Player turn: " + (currentPlayer+1));
             }
         });
-
+        if(num_players==0){
+            player_turn.setVisibility(View.GONE);
+            answerButton.setVisibility(View.GONE);
+            drinkButton.setVisibility(View.GONE);
+            skipButton.setVisibility(View.GONE);
+            score_board.setVisibility(View.GONE);
+        }
         s=new ArrayList<String >();
         s.add("Give us a passionate example of your dirty talk.");
         s.add("Would you ever knowingly enter into an open relationship? What rules are required to keep the peace?");
@@ -210,56 +219,58 @@ public class Deck3 extends AppCompatActivity {
                 s.remove(0);
                 arrayAdapter.notifyDataSetChanged();
 
-                if(s.size()==0)
-                {
-                    answerButton.setVisibility(View.GONE);
-                    drinkButton.setVisibility(View.GONE);
-                    skipButton.setVisibility(View.GONE);
-                    player1.setVisibility(View.GONE);
-                    player2.setVisibility(View.GONE);
-                    player3.setVisibility(View.GONE);
-                    player4.setVisibility(View.GONE);
-                    player_turn.setVisibility(View.GONE);
-                    int winnerIndex=0;
-                    int maxScore = userList.get(0).getScore();
-                    for(int i = 1; i < userList.size(); i++){
-                        if(maxScore< userList.get(i).getScore()){
-                            maxScore = userList.get(i).getScore();
-                            winnerIndex=i;
-                        }
-                    }
-                    ArrayList<Integer> winners = new ArrayList<Integer>();
-                    winners.add(winnerIndex);
-                    for(int i = 0; i < userList.size(); i++){
-                        if(i!=winnerIndex && maxScore == userList.get(i).getScore()){
-                            winners.add(i);
-                        }
-                    }
-
-                    if(maxScore == 0){
-                        winner.setText("No one scored any points...");
-                    }
-                    else {
-                        if(winners.size()==1) {
-                            winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
-                        }
-                        else{
-                            String win = "Players ";
-                            if (winners.size()==2){
-                                win += (winners.get(0)+1) + " and " + (winners.get(1)+1);
+                if(s.size()==0) {
+                    if (num_players > 0) {
+                        answerButton.setVisibility(View.GONE);
+                        drinkButton.setVisibility(View.GONE);
+                        skipButton.setVisibility(View.GONE);
+                        player1.setVisibility(View.GONE);
+                        player2.setVisibility(View.GONE);
+                        player3.setVisibility(View.GONE);
+                        player4.setVisibility(View.GONE);
+                        player_turn.setVisibility(View.GONE);
+                        score_board.setVisibility(View.GONE);
+                        int winnerIndex = 0;
+                        int maxScore = userList.get(0).getScore();
+                        for (int i = 1; i < userList.size(); i++) {
+                            if (maxScore < userList.get(i).getScore()) {
+                                maxScore = userList.get(i).getScore();
+                                winnerIndex = i;
                             }
-                            else {
-                                for (int i = 0; i < winners.size() - 1; i++) {
-                                    win += (i+1) + ", ";
+                        }
+                        ArrayList<Integer> winners = new ArrayList<Integer>();
+                        winners.add(winnerIndex);
+                        for (int i = 0; i < userList.size(); i++) {
+                            if (i != winnerIndex && maxScore == userList.get(i).getScore()) {
+                                winners.add(i);
+                            }
+                        }
+
+                        if (maxScore == 0) {
+                            winner.setText("No one scored any points...");
+                        } else {
+                            if (winners.size() == 1) {
+                                winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
+                            } else {
+                                String win = "Players ";
+                                if (winners.size() == 2) {
+                                    win += (winners.get(0) + 1) + " and " + (winners.get(1) + 1);
+                                } else {
+                                    for (int i = 0; i < winners.size() - 1; i++) {
+                                        win += (i + 1) + ", ";
+                                    }
+
+                                    win += "and " + (winners.get(winners.size() - 1) + 1);
                                 }
-
-                                win += "and " + (winners.get(winners.size() - 1)+1);
+                                winner.setText(win + " have tied with a score of " + maxScore + " points!!!");
                             }
-                            winner.setText(win + " have tied with a score of " + maxScore + " points!!!");
+
                         }
 
                     }
-
+                    else{
+                        winner.setText("The game has finished!");
+                    }
                 }
             }
 
