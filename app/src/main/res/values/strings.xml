@@ -26,5 +26,7 @@
     <string name="answer_btn">Answers</string>
     <string name="drinks_btn">Drinks</string>
     <string name="skip_btn">Skips</string>
+    <string name="endgame_btn">End Game</string>
+    <string name="backToMain_btn">Return to Main Menu</string>
     <string name="no_players">No Players</string>
 </resources>
