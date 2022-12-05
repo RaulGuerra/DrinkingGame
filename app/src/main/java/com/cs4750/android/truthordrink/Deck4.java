@@ -197,6 +197,7 @@ public class Deck4 extends AppCompatActivity {
                     }
                 }
                 else{
+                    bottleGif.setVisibility(View.VISIBLE);
                     winner.setText("The game has finished!");
                     endgameButton.setVisibility(View.GONE);
                 }
@@ -391,7 +392,9 @@ public class Deck4 extends AppCompatActivity {
 
                     }
                     else{
+                        bottleGif.setVisibility(View.VISIBLE);
                         winner.setText("The game has finished!");
+                        endgameButton.setVisibility(View.GONE);
                     }
                 }
             }
