@@ -110,6 +110,8 @@ public class Deck1 extends AppCompatActivity {
         drinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userList.get(currentPlayer).decrementScore();
+                textList.get(currentPlayer).setText("Player " + (currentPlayer+1) + ": " + userList.get(currentPlayer).getScore()+ " points");
                 currentPlayer= (currentPlayer +1)%userList.size();
                 player_turn.setText("Player turn: " + (currentPlayer+1));
             }

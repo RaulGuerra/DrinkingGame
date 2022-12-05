@@ -15,4 +15,5 @@ public class User {
     public void incrementScore(){
         this.score++;
     }
+    public void decrementScore() { this.score--; }
 }
