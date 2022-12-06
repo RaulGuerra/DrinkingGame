@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -40,6 +41,9 @@ public class Deck3 extends AppCompatActivity {
     Button skipButton;
     Button endgameButton;
     Button backToMainButton;
+    Space space1;
+    Space space2;
+    Space space3;
     ImageView bottleGif;
     ImageView no_winners_gif;
     TextView player1;
@@ -73,6 +77,9 @@ public class Deck3 extends AppCompatActivity {
         endgameButton = findViewById(R.id.endgame_button);
         backToMainButton = findViewById(R.id.backToMain_button);
         backToMainButton.setVisibility(View.GONE);
+        space1 = findViewById(R.id.space1);
+        space2 = findViewById(R.id.space2);
+        space3 = findViewById(R.id.space3);
 
         konfettiView = findViewById(R.id.konfettiView);
         bottleGif = findViewById(R.id.bottleGif);
@@ -231,6 +238,9 @@ public class Deck3 extends AppCompatActivity {
             drinkButton.setVisibility(View.GONE);
             skipButton.setVisibility(View.GONE);
             score_board.setVisibility(View.GONE);
+            space1.setVisibility(View.GONE);
+            space2.setVisibility(View.GONE);
+            space3.setVisibility(View.GONE);
         }
         s=new ArrayList<String >();
         s.add("Give us a passionate example of your dirty talk.");
