@@ -139,13 +139,24 @@ public class Deck4 extends AppCompatActivity {
                 .position(0.0, 0.0, 1.0, 0.0)
                 .build();
 
+        EmitterConfig emitterConfig2 = new Emitter(1L, TimeUnit.SECONDS).perSecond(10);
+        final Party sadparty = new PartyFactory(emitterConfig2)
+                .angle(270)
+                .spread(360)
+                .setSpeedBetween(0f, 2f)
+                .timeToLive(2000L)
+                .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
+                .sizes(new Size(12, 5f, 0.2f))
+                .colors(Arrays.asList(0x575757, 0x000000, 0xa3a3a3, 0xd6d6d6))
+                .position(0.0, 0.0, 1.0, 0.0)
+                .build();
+
         endgameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 arrayAdapter.clear();
                 backToMainButton.setVisibility(View.VISIBLE);
 
-                konfettiView.start(party);
                 if(num_players>0) {
                     answerButton.setVisibility(View.GONE);
                     drinkButton.setVisibility(View.GONE);
@@ -175,9 +186,11 @@ public class Deck4 extends AppCompatActivity {
 
                     if (maxScore == 0) {
                         no_winners_gif.setVisibility(View.VISIBLE);
+                        konfettiView.start(sadparty);
                         winner.setText("No one scored any points...");
                     } else {
                         bottleGif.setVisibility(View.VISIBLE);
+                        konfettiView.start(party);
                         if (winners.size() == 1) {
                             winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
                         } else {
@@ -198,6 +211,7 @@ public class Deck4 extends AppCompatActivity {
                 }
                 else{
                     bottleGif.setVisibility(View.VISIBLE);
+                    konfettiView.start(party);
                     winner.setText("The game has finished!");
                     endgameButton.setVisibility(View.GONE);
                 }
@@ -369,9 +383,11 @@ public class Deck4 extends AppCompatActivity {
 
                         if (maxScore == 0) {
                             no_winners_gif.setVisibility(View.VISIBLE);
+                            konfettiView.start(sadparty);
                             winner.setText("No one scored any points...");
                         } else {
                             bottleGif.setVisibility(View.VISIBLE);
+                            konfettiView.start(party);
                             if (winners.size() == 1) {
                                 winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
                             } else {
@@ -393,6 +409,7 @@ public class Deck4 extends AppCompatActivity {
                     }
                     else{
                         bottleGif.setVisibility(View.VISIBLE);
+                        konfettiView.start(party);
                         winner.setText("The game has finished!");
                         endgameButton.setVisibility(View.GONE);
                     }
