@@ -14,7 +14,7 @@
     <string name="help_level2">***LEVEL 2 - LOOSEN UP:\n A deck for sharing laughs with mixed company. Chill questions that help everyone loosen up.</string>
     <string name="help_level3">***LEVEL 3 - ADULT DRINKS, ADULT TALKS, ADULT TIMES: \n NSFW Warning: No kids allowed with this adult-themed deck. From cringy moments to sexy dares, it\'s all about sex in great detail!</string>
     <string name="help_level4">***LEVEL 4 - NOTHING LEFT TO LOSE: \n NSFW Warning: don\'t play this unless you have nothing left to lose tonight. There are swears too, so yeah...</string>
-    <string name="help_footer">We also offer a \'Spin The Bottle\' feature, where you can make up your own game with questions or dares. How practical, isn\'t it?</string>
+    <string name="help_footer">\nWe also offer a \'Spin The Bottle\' feature, where you can make up your own game with questions or dares. How practical, isn\'t it?</string>
     <string name="twoplayers_btn">2 Players</string>
     <string name="threeplayers_btn">3 Players</string>
     <string name="fourplayers_btn">4 Players</string>
@@ -26,5 +26,7 @@
     <string name="answer_btn">Answers</string>
     <string name="drinks_btn">Drinks</string>
     <string name="skip_btn">Skips</string>
+    <string name="endgame_btn">End Game</string>
+    <string name="backToMain_btn">Return to Main Menu</string>
     <string name="no_players">No Players</string>
 </resources>

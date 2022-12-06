@@ -1,5 +1,8 @@
 package com.cs4750.android.truthordrink;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -7,6 +10,7 @@ import android.view.WindowManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +18,17 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
+
+import nl.dionsegijn.konfetti.core.Party;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Shape;
+import nl.dionsegijn.konfetti.core.models.Size;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class Deck3 extends AppCompatActivity {
 
@@ -24,6 +38,10 @@ public class Deck3 extends AppCompatActivity {
     Button answerButton;
     Button drinkButton;
     Button skipButton;
+    Button endgameButton;
+    Button backToMainButton;
+    ImageView bottleGif;
+    ImageView no_winners_gif;
     TextView player1;
     TextView player2;
     TextView player3;
@@ -34,6 +52,10 @@ public class Deck3 extends AppCompatActivity {
     ArrayList<TextView> textList;
     int currentPlayer=0;
     TextView winner;
+
+    private KonfettiView konfettiView = null;
+    private Shape.DrawableShape drawableShape = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +70,14 @@ public class Deck3 extends AppCompatActivity {
         answerButton = findViewById(R.id.answer_button);
         drinkButton = findViewById(R.id.drink_button);
         skipButton = findViewById(R.id.skip_button);
+        endgameButton = findViewById(R.id.endgame_button);
+        backToMainButton = findViewById(R.id.backToMain_button);
+        backToMainButton.setVisibility(View.GONE);
+
+        konfettiView = findViewById(R.id.konfettiView);
+        bottleGif = findViewById(R.id.bottleGif);
+        no_winners_gif = findViewById(R.id.no_winners_gif);
+
         player1 = findViewById(R.id.player_1);
         player2 = findViewById(R.id.player_2);
         player3 = findViewById(R.id.player_3);
@@ -80,6 +110,8 @@ public class Deck3 extends AppCompatActivity {
         drinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userList.get(currentPlayer).decrementScore();
+                textList.get(currentPlayer).setText("Player " + (currentPlayer+1) + ": " + userList.get(currentPlayer).getScore()+ " points");
                 currentPlayer= (currentPlayer +1)%userList.size();
                 player_turn.setText("Player turn: " + (currentPlayer+1));
             }
@@ -91,6 +123,108 @@ public class Deck3 extends AppCompatActivity {
                 player_turn.setText("Player turn: " + (currentPlayer+1));
             }
         });
+
+        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.bottle);
+        drawableShape = new Shape.DrawableShape(drawable, true);
+
+        EmitterConfig emitterConfig = new Emitter(10L, TimeUnit.SECONDS).perSecond(100);
+        final Party party = new PartyFactory(emitterConfig)
+                .angle(270)
+                .spread(360)
+                .setSpeedBetween(0f, 25f)
+                .timeToLive(2000L)
+                .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
+                .sizes(new Size(12, 5f, 0.2f))
+                .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
+                .position(0.0, 0.0, 1.0, 0.0)
+                .build();
+
+        EmitterConfig emitterConfig2 = new Emitter(1L, TimeUnit.SECONDS).perSecond(10);
+        final Party sadparty = new PartyFactory(emitterConfig2)
+                .angle(270)
+                .spread(360)
+                .setSpeedBetween(0f, 2f)
+                .timeToLive(2000L)
+                .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
+                .sizes(new Size(12, 5f, 0.2f))
+                .colors(Arrays.asList(0x575757, 0x000000, 0xa3a3a3, 0xd6d6d6))
+                .position(0.0, 0.0, 1.0, 0.0)
+                .build();
+
+        endgameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayAdapter.clear();
+                backToMainButton.setVisibility(View.VISIBLE);
+
+                if(num_players>0) {
+                    answerButton.setVisibility(View.GONE);
+                    drinkButton.setVisibility(View.GONE);
+                    skipButton.setVisibility(View.GONE);
+                    endgameButton.setVisibility(View.GONE);
+                    player1.setVisibility(View.GONE);
+                    player2.setVisibility(View.GONE);
+                    player3.setVisibility(View.GONE);
+                    player4.setVisibility(View.GONE);
+                    player_turn.setVisibility(View.GONE);
+                    score_board.setVisibility(View.GONE);
+                    int winnerIndex = 0;
+                    int maxScore = userList.get(0).getScore();
+                    for (int i = 1; i < userList.size(); i++) {
+                        if (maxScore < userList.get(i).getScore()) {
+                            maxScore = userList.get(i).getScore();
+                            winnerIndex = i;
+                        }
+                    }
+                    ArrayList<Integer> winners = new ArrayList<Integer>();
+                    winners.add(winnerIndex);
+                    for (int i = 0; i < userList.size(); i++) {
+                        if (i != winnerIndex && maxScore == userList.get(i).getScore()) {
+                            winners.add(i);
+                        }
+                    }
+
+                    if (maxScore == 0) {
+                        no_winners_gif.setVisibility(View.VISIBLE);
+                        konfettiView.start(sadparty);
+                        winner.setText("No one scored any points...");
+                    } else {
+                        bottleGif.setVisibility(View.VISIBLE);
+                        konfettiView.start(party);
+                        if (winners.size() == 1) {
+                            winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
+                        } else {
+                            String win = "Players ";
+                            if (winners.size() == 2) {
+                                win += (winners.get(0) + 1) + " and " + (winners.get(1) + 1);
+                            } else {
+                                for (int i = 0; i < winners.size() - 1; i++) {
+                                    win += (i + 1) + ", ";
+                                }
+
+                                win += "and " + (winners.get(winners.size() - 1) + 1);
+                            }
+                            winner.setText(win + " have tied with a score of " + maxScore + " points!!!");
+                        }
+
+                    }
+                }
+                else{
+                    bottleGif.setVisibility(View.VISIBLE);
+                    konfettiView.start(party);
+                    winner.setText("The game has finished!");
+                    endgameButton.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        backToMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Deck3.this, MainActivity.class));
+            }
+        });
+
         if(num_players==0){
             player_turn.setVisibility(View.GONE);
             answerButton.setVisibility(View.GONE);
@@ -220,6 +354,9 @@ public class Deck3 extends AppCompatActivity {
                 arrayAdapter.notifyDataSetChanged();
 
                 if(s.size()==0) {
+                    backToMainButton.setVisibility(View.VISIBLE);
+                    bottleGif.setVisibility(View.VISIBLE);
+                    konfettiView.start(party);
                     if (num_players > 0) {
                         answerButton.setVisibility(View.GONE);
                         drinkButton.setVisibility(View.GONE);
@@ -247,8 +384,12 @@ public class Deck3 extends AppCompatActivity {
                         }
 
                         if (maxScore == 0) {
+                            no_winners_gif.setVisibility(View.VISIBLE);
+                            konfettiView.start(sadparty);
                             winner.setText("No one scored any points...");
                         } else {
+                            bottleGif.setVisibility(View.VISIBLE);
+                            konfettiView.start(party);
                             if (winners.size() == 1) {
                                 winner.setText("Player " + (winnerIndex + 1) + " has won with a score of " + maxScore + " points!!!");
                             } else {
@@ -269,7 +410,10 @@ public class Deck3 extends AppCompatActivity {
 
                     }
                     else{
+                        bottleGif.setVisibility(View.VISIBLE);
+                        konfettiView.start(party);
                         winner.setText("The game has finished!");
+                        endgameButton.setVisibility(View.GONE);
                     }
                 }
             }

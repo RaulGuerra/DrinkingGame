@@ -112,60 +112,68 @@
         app:layout_constraintWidth_percent="0.70"
         app:srcCompat="@drawable/main_menu_logo" />
 
-    <CheckBox
-        android:id="@+id/no_players"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
-        android:buttonTint="@android:color/background_dark"
-        android:fontFamily="monospace"
-        android:minHeight="48dp"
-        android:text="@string/no_players"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
-
-    <CheckBox
-        android:id="@+id/two_players"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="84dp"
-        android:buttonTint="@android:color/background_dark"
-        android:fontFamily="monospace"
-        android:minHeight="48dp"
-        android:text="@string/twoplayers_btn"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
-
-    <CheckBox
-        android:id="@+id/three_players"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="40dp"
-        android:buttonTint="@android:color/background_dark"
-        android:fontFamily="monospace"
-        android:minHeight="48dp"
-        android:text="@string/threeplayers_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
+        app:layout_constraintTop_toBottomOf="@+id/help">
 
-    <CheckBox
-        android:id="@+id/four_players"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="84dp"
-        android:buttonTint="@android:color/background_dark"
-        android:checked="false"
-        android:fontFamily="monospace"
-        android:minHeight="48dp"
-        android:text="@string/fourplayers_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help"></CheckBox>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/no_players"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@android:color/background_dark"
+                android:fontFamily="monospace"
+                android:minHeight="48dp"
+                android:text="@string/no_players"></CheckBox>
+
+            <CheckBox
+                android:id="@+id/two_players"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@android:color/background_dark"
+                android:fontFamily="monospace"
+                android:minHeight="48dp"
+                android:text="@string/twoplayers_btn"></CheckBox>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/three_players"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@android:color/background_dark"
+                android:fontFamily="monospace"
+                android:minHeight="48dp"
+                android:text="@string/threeplayers_btn"></CheckBox>
+
+            <CheckBox
+                android:id="@+id/four_players"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@android:color/background_dark"
+                android:checked="false"
+                android:fontFamily="monospace"
+                android:minHeight="48dp"
+                android:text="@string/fourplayers_btn"></CheckBox>
+        </LinearLayout>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
