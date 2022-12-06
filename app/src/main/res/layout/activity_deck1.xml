@@ -85,6 +85,7 @@
         android:textSize="22dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
