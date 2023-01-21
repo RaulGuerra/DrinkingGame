@@ -1,0 +1,28 @@
+----------Main Menu----------
+Buttons appear from left side and leave on right side. (Design)
+Colored buttons
+Options button
+Add music (looped)
+Scrollable
+Rotate screen
+Never-Have-I-Ever button
+
+--------Decks--------------
+Randomize questions
+Ask how many players
+Rotate screen
+Family deck
+
+---------Spin Bottle--------
+Ask: want to show questions? If yes: Pick deck then. Else: just bottle animation.
+Ensure minimum spinning motion (spin at least 2 sec)
+
+------------Never-Have-I-Ever-------------
+
+Possibly add different levels of questioning and intimacy
+
+
+---------Options button----------
+Language options
+Sounds options
+
