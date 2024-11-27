@@ -163,7 +163,8 @@
             android:fontFamily="monospace"
             android:text="@string/answer_btn" />
 
-        <Space
+        <android.widget.Space
+            android:id="@+id/space1"
             android:layout_width="8dp"
             android:layout_height="1dp"
             android:layout_weight="1" />
@@ -176,7 +177,8 @@
             android:fontFamily="monospace"
             android:text="@string/drinks_btn" />
 
-        <Space
+        <android.widget.Space
+            android:id="@+id/space2"
             android:layout_width="8dp"
             android:layout_height="1dp"
             android:layout_weight="1" />
@@ -189,7 +191,8 @@
             android:fontFamily="monospace"
             android:text="@string/skip_btn" />
 
-        <Space
+        <android.widget.Space
+            android:id="@+id/space3"
             android:layout_width="8dp"
             android:layout_height="1dp"
             android:layout_weight="1" />
